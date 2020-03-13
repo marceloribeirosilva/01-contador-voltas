@@ -1,24 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+const MostraVoltas = (props) => {
+  return (
+    <p>
+      {props.voltas}<br />
+    Voltas
+    </p>
+  )
+}
+
+const MostraTempo = (props) => {
+  return (
+    <p>{props.tempo} <br /> Tempo Médio por volta</p>
+  )
+}
+
+const Button = (props) => <button onClick={props.onClick}>{props.text}</button>
 
 function App() {
+  let numVoltas = 14
+
+  const increment = () => {
+    numVoltas ++
+    console.log('increment')
+  }
+
+  const decrement = () => {
+    numVoltas --
+    console.log('decrement')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MostraVoltas voltas={numVoltas}/>
+      <Button text='+' onClick={increment}/>
+      <Button text='-' onClick={decrement}/>
+      <MostraTempo tempo='01:30'/>
+      <Button text='Iniciar' />
+      <Button text='Reiniciar' />
     </div>
   );
 }
